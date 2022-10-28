@@ -2294,7 +2294,7 @@ prettier@^2.7.1:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.7.1.tgz#e235806850d057f97bb08368a4f7d899f7760c64"
   integrity sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==
 
-prop-types@^15.8.1:
+prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -2362,6 +2362,13 @@ react-native-fetch-api@^2.0.0:
   integrity sha512-GOA8tc1EVYLnHvma/TU9VTgLOyralO7eATRuCDchQveXW9Fr9vXygyq9iwqmM7YRZ8qRJfEt9xOS7OYMdJvRFw==
   dependencies:
     p-defer "^3.0.0"
+
+react-social-icons@^5.15.0:
+  version "5.15.0"
+  resolved "https://registry.yarnpkg.com/react-social-icons/-/react-social-icons-5.15.0.tgz#6b815aab9eff210e1f6e8a4ca420684aa72c154a"
+  integrity sha512-khfDgUiUwEBe34T6br2+mkXQg3hLVDdviVjexxZoVCsogMgxTy/m8+KlX/j6Wa7P2BPxgZ7yZ2jXw3X06pUUFQ==
+  dependencies:
+    prop-types "^15.7.2"
 
 react@18.2.0:
   version "18.2.0"

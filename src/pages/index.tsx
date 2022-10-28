@@ -5,6 +5,7 @@ import { useState, useRef } from "react";
 import { XCircleIcon, PlusIcon } from "@heroicons/react/outline"
 import type { FormEvent } from "react"
 import toast from "react-hot-toast"
+import { SocialIcon } from "react-social-icons"
 
 const Home: NextPage = () => {
 
@@ -66,61 +67,65 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div>
-        <p className="flex justify-center mt-12 font-poppins text-white font-bold text-3xl">IPFS Image Uploader</p>
-        <main className="min-h-screen items-center justify-center flex bg-base-100">
-          <div className="flex flex-col space-y-10 w-1/4 mx-auto">
-            <div className="flex flex-1 flex-col space-y-10 bg-base-200 p-8 rounded-lg shadow-xl">
-              <form className="flex space-x-4" onSubmit={(event: FormEvent<HTMLFormElement>) => {
-                event.preventDefault()
-                if (event.currentTarget.gateway.value) {
-                  setGateway("https://" + event.currentTarget.gateway.value + "/ipfs")
-                } else {
-                  setGateway(publicGateway)
-                }
-              }}>
-                <input
-                  type="text"
-                  id="gateway"
-                  className="bg-white flex-1 rounded-md p-2 outline-none text-black font-poppins placeholder:font-poppins text-sm placeholder:text-sm"
-                  placeholder="Enter custom gateway..." />
-                <button type="submit" className="btn btn-primary">Set</button>
-              </form>
-              <p className="font-poppins text-semibold">Current gateway: {`${gateway.length > 0 ? gateway : publicGateway}`}</p>
-              <div className="flex space-x-4 items-center">
-                {images.length > 0 &&
-                  <div className="flex space-x-6 p-2 flex-wrap items-center">
-                    {images.map((image, index) => {
-                      return (
-                        <div className="relative" key={index}>
-                          <XCircleIcon className='absolute top-0 left-8 w-6 h-6 text-red-500 cursor-pointer' onClick={() => removeImage(index)} />
-                          <img className='w-12 h-12 object-contain' src={image} alt="banner" />
-                        </div>
-                      )
-                    })}
-                  </div>
-                }
-                <button className='btn w-fit mx-auto' onClick={() => (imagePickerRef as any).current?.click()}>
-                  <PlusIcon className='w-8 h-8 text-gray-400' />
-                  <input ref={imagePickerRef} onChange={addImage} type="file" hidden />
-                </button>
-              </div>
-              <button className="btn btn-secondary" disabled={images.length == 0} onClick={addImagesToIPFS}>Upload</button>
-              {imagesUrl.length > 0 &&
-                <div className="flex flex-col space-y-1">
-                  {imagesUrl.map((url, index) => {
+      <main className="min-h-screen items-center justify-center flex bg-base-100">
+        <div className="flex flex-col space-y-10 w-1/4 mx-auto">
+          <div className="flex justify-center items-center ">
+            <p className="p-5 font-poppins text-white font-bold text-3xl">IPFS Image Uploader</p>
+            <SocialIcon
+              url="https://github.com/pgrignaffini/ipfs-uploader"
+              fgColor='gray'
+              bgColor='transparent' />
+          </div>
+          <div className="flex flex-1 flex-col space-y-10 bg-base-200 p-8 rounded-lg shadow-xl">
+            <form className="flex space-x-4" onSubmit={(event: FormEvent<HTMLFormElement>) => {
+              event.preventDefault()
+              if (event.currentTarget.gateway.value) {
+                setGateway("https://" + event.currentTarget.gateway.value + "/ipfs")
+              } else {
+                setGateway(publicGateway)
+              }
+            }}>
+              <input
+                type="text"
+                id="gateway"
+                className="bg-white flex-1 rounded-md p-2 outline-none text-black font-poppins placeholder:font-poppins text-sm placeholder:text-sm"
+                placeholder="Enter custom gateway..." />
+              <button type="submit" className="btn btn-primary">Set</button>
+            </form>
+            <p className="font-poppins text-semibold">Current gateway: {`${gateway.length > 0 ? gateway : publicGateway}`}</p>
+            <div className="flex space-x-4 items-center">
+              {images.length > 0 &&
+                <div className="flex space-x-6 p-2 flex-wrap items-center">
+                  {images.map((image, index) => {
                     return (
-                      <a
-                        key={index}
-                        className="hover:underline hover:text-info cursor-pointer"
-                        href={url} target="_blank" rel="noreferrer noopener">#{index + 1} image link</a>
+                      <div className="relative" key={index}>
+                        <XCircleIcon className='absolute top-0 left-8 w-6 h-6 text-red-500 cursor-pointer' onClick={() => removeImage(index)} />
+                        <img className='w-12 h-12 object-contain' src={image} alt="banner" />
+                      </div>
                     )
                   })}
-                </div>}
+                </div>
+              }
+              <button className='btn w-fit mx-auto' onClick={() => (imagePickerRef as any).current?.click()}>
+                <PlusIcon className='w-8 h-8 text-gray-400' />
+                <input ref={imagePickerRef} onChange={addImage} type="file" hidden />
+              </button>
             </div>
+            <button className="btn btn-secondary" disabled={images.length == 0} onClick={addImagesToIPFS}>Upload</button>
+            {imagesUrl.length > 0 &&
+              <div className="flex flex-col space-y-1">
+                {imagesUrl.map((url, index) => {
+                  return (
+                    <a
+                      key={index}
+                      className="hover:underline hover:text-info cursor-pointer"
+                      href={url} target="_blank" rel="noreferrer noopener">#{index + 1} image link</a>
+                  )
+                })}
+              </div>}
           </div>
-        </main>
-      </div>
+        </div>
+      </main>
     </>
   );
 };

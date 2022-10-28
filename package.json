@@ -13,6 +13,7 @@
     "daisyui": "^2.24.2",
     "ipfs-http-client": "^59.0.0",
     "next": "12.3.1",
+    "react-social-icons": "^5.15.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.0",
